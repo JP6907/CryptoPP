@@ -31,8 +31,12 @@ std::string CryptoSHA256::CalculateSHA256(std::string Message) {
 	return s;
 }
 bool CryptoSHA256::VerifySHA256(std::string Digest, std::string Message) {
+	//cout << "verifyint ------ " << endl;
+	cout << Message << endl;
 	std::string stemp = CalculateSHA256(Message);
-	if (strcmp(stemp.data(),Message.data())) {
+	//cout << stemp << endl;
+	//cout << Digest << endl;
+	if (stemp == Digest ) {
 		return true;
 	}
 	else {
