@@ -10,8 +10,8 @@ public:
 	CryptoSHA256();
 	~CryptoSHA256();
 
-	static std::string CalculateDigest(std::string data);
-	static bool VerifyDigest(std::string Digest, std::string Message);
+	static std::string CalculateSHA256(std::string Message);
+	static bool VerifySHA256(std::string Digest, std::string Message);
 
 };
 #endif
