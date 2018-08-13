@@ -1,5 +1,6 @@
 #include "cryptosha256.h"
 
+#include <algorithm>
 #include "sha.h"
 #include "secblock.h"
 #include "modes.h"
@@ -27,12 +28,13 @@ std::string CryptoSHA256::CalculateSHA256(std::string Message) {
 	ChannelSwitch cs;
 	cs.AddDefaultRoute(f);
 	StringSource ss(Message, true/*pumpAll*/, new Redirector(cs));
+	//全部转化成小写
+	transform(s.begin(), s.end(), s.begin(), ::tolower);
 
 	return s;
 }
 bool CryptoSHA256::VerifySHA256(std::string Digest, std::string Message) {
-	//cout << "verifyint ------ " << endl;
-	cout << Message << endl;
+
 	std::string stemp = CalculateSHA256(Message);
 	//cout << stemp << endl;
 	//cout << Digest << endl;
